@@ -2,10 +2,10 @@ name: REGoth GitHub CI
     
 on:
   push:
-    branches: [ master ] #Everytime master branch is updated
+    branches: [ master ] 
     paths: ['.github/workflows/*', 'cmake/*', 'lib/*', 'src/*'] #only when these files are modifed
   pull_request:
-    branches: [ master ] #for every pull request going to master
+    branches: [ master ] 
     paths: ['.github/workflows/*', 'cmake/*', 'lib/*', 'src/*'] #only when these files are modifed
 
 jobs:
