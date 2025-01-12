@@ -1,12 +1,12 @@
 name: REGoth GitHub CI
-    
+
 on:
   push:
     branches: [ master ] 
-    paths: ['.github/workflows/*', 'cmake/*', 'lib/*', 'src/*'] #only when these files are modifed
+    paths: ['.github/workflows/*', 'cmake/*', 'lib/*', 'src/*'] #only when these files are modified
   pull_request:
     branches: [ master ] 
-    paths: ['.github/workflows/*', 'cmake/*', 'lib/*', 'src/*'] #only when these files are modifed
+    paths: ['.github/workflows/*', 'cmake/*', 'lib/*', 'src/*'] #only when these files are modified
 
 jobs:
   build: 
@@ -58,7 +58,7 @@ jobs:
         rm -rf .cache
         mkdir -p ./.cache/bsf
         bsf_status=$(echo $(git submodule status lib/bsf) | sed "s/ /-/g") #get submodule status and replace spaces with dashes
-        echo "::set-env name=BSF_COMMIT_ID::$bsf_status" #output as environment variable because I dont know any better way
+        echo "BSF_COMMIT_ID=$bsf_status" >> $GITHUB_ENV #output as environment variable because I dont know any better way
     
     - name: Cache bsf
       uses: actions/cache@v1.1.2
@@ -134,7 +134,7 @@ jobs:
         find artifacts/
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v3
       with:
         # Artifact name
         name: "${{ runner.os }}-REGoth"
